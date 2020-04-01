@@ -102,7 +102,7 @@ public class Planner implements ReadOnlyPlanner {
     }
 
     public boolean hasStudent(Student student) {
-        return false;
+        return students.contains(student);
     }
 
     public boolean hasModule(Module module) {
@@ -111,7 +111,7 @@ public class Planner implements ReadOnlyPlanner {
 
 
     public boolean addModule(Module module) {
-        // TODO
+        modules.add(module);
         return true;
     }
 
@@ -308,14 +308,14 @@ public class Planner implements ReadOnlyPlanner {
         }
 
         // instanceof handles nulls
-        if (!(obj instanceof ModelManager)) {
+        if (!(obj instanceof Planner)) {
             return false;
         }
 
         // state check
         Planner other = (Planner) obj;
-        return activeStudent.equals(other.activeStudent)
-            && activeSemester.equals(other.activeSemester)
+        return (activeStudent == null && other.activeStudent == null || activeStudent.equals(other.activeStudent))
+            && (activeSemester == null && other.activeSemester == null || activeSemester.equals(other.activeSemester))
             && students.equals(other.students);
     }
 }

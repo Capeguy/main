@@ -115,6 +115,9 @@ public class ModelManager implements Model {
     }
 
     public boolean hasModule(Module module) {
+        if (module == null) {
+            throw new NullPointerException();
+        }
         return planner.getModuleList().contains(module);
     }
 

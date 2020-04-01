@@ -52,7 +52,7 @@ public class PlannerTest {
 
     @Test
     public void hasModule_moduleNotInPlanner_returnsFalse() {
-        assertFalse(planner.hasModule(TypicalModules.CS2040));
+        assertFalse(planner.hasModule(TypicalModules.NON_EXISTING_MODULE));
     }
 
     @Test

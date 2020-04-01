@@ -1,7 +1,12 @@
 {
-  "students": [ {
-    "name": "Alice Pauline"
+  "students" : [ {
+    "name" : "Ben",
+    "major" : "CS",
+    "timeTableMap" : [ ]
   }, {
-    "name": "Alice Pauline"
-  } ]
+    "name" : "Ben",
+    "major" : "IS",
+    "timeTableMap" : [ ]
+  }
+  ]
 }

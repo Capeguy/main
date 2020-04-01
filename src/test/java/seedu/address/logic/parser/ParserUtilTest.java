@@ -11,7 +11,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.module.ModuleCode;
 
 public class ParserUtilTest {
-    private static final String INVALID_MODULE_CODE = "99999";
+    private static final String INVALID_MODULE_CODE = "";
 
     private static final String VALID_MODULE_CODE = "CS2040";
 

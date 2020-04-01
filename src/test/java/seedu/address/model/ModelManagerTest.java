@@ -14,6 +14,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.module.Module;
 import seedu.address.testutil.PlannerBuilder;
 import seedu.address.testutil.TypicalModules;
+import seedu.address.testutil.TypicalStudents;
 
 public class ModelManagerTest {
 
@@ -69,6 +70,23 @@ public class ModelManagerTest {
         assertEquals(path, modelManager.setPlannerFilePath(path));
     }
 
+
+    @Test
+    public void hasStudent_nullStudent_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasStudent(null));
+    }
+
+    @Test
+    public void hasStudent_studentNotInPlanner_returnsFalse() {
+        assertFalse(modelManager.hasStudent(TypicalStudents.BOB));
+    }
+
+    @Test
+    public void hasStudent_studentInPlanner_returnsTrue() {
+        modelManager.addStudent(TypicalStudents.BOB);
+        assertTrue(modelManager.hasStudent(TypicalStudents.BOB));
+    }
+    
     @Test
     public void hasModule_nullModule_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> modelManager.hasModule(null));
@@ -92,7 +110,7 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        Planner planner = new PlannerBuilder().build();
+        Planner planner = new PlannerBuilder().withModule(TypicalModules.CS2040).withStudent(TypicalStudents.BOB).build();
         Planner differentPlanner = new Planner();
         UserPrefs userPrefs = new UserPrefs();
 

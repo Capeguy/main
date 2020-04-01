@@ -12,7 +12,6 @@ public class ModuleBuilder {
 
     private ModuleCode moduleCode;
 
-
     public ModuleBuilder() {
         moduleCode = new ModuleCode(DEFAULT_CODE);
     }
@@ -27,13 +26,13 @@ public class ModuleBuilder {
     /**
      * Sets the {@code Name} of the {@code Person} that we are building.
      */
-    public ModuleBuilder withModuleCode(String moduleCode) {
-        this.moduleCode = new ModuleCode(moduleCode);
+    public ModuleBuilder withModuleCode(ModuleCode moduleCode) {
+        this.moduleCode = moduleCode;
         return this;
     }
 
     public Module build() {
-        return new Module(new ModuleCode(DEFAULT_CODE));
+        return new Module(moduleCode);
     }
 
 }

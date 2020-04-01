@@ -36,6 +36,11 @@ public class Student {
     private Major major;
     private GenericSpecialisation specialisation;
 
+
+    public Student() {
+        this(null, new Degrees(), null);
+    }
+
     /**
      * Every field must be present and not null.
      */
@@ -61,7 +66,6 @@ public class Student {
     }
 
     public Student(Name name, Degrees degrees, Major major) {
-        requireAllNonNull(name);
         this.name = name;
         this.degrees = degrees;
         this.major = major;
@@ -70,6 +74,10 @@ public class Student {
 
     public Name getName() {
         return name;
+    }
+
+    public void setName(Name name) {
+        this.name = name;
     }
 
     public Major getMajor() {
@@ -111,9 +119,9 @@ public class Student {
         Student otherStudent = (Student) other;
         // TODO: initialize and compare `degrees`
         return otherStudent.getName().equals(getName())
-            && otherStudent.getMajor().equals(getMajor())
-            //&& otherStudent.getDegrees().equals(getDegrees())
-            && otherStudent.getTimeTableMap().equals(getTimeTableMap());
+                && otherStudent.getMajor().equals(getMajor())
+                //&& otherStudent.getDegrees().equals(getDegrees())
+                && otherStudent.getTimeTableMap().equals(getTimeTableMap());
     }
 
     @Override
@@ -126,7 +134,7 @@ public class Student {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(PREFIX_NAME).append(getName()).append(" ")
-            .append(PREFIX_MAJOR).append(getMajor());
+                .append(PREFIX_MAJOR).append(getMajor());
         return builder.toString();
     }
 
@@ -181,10 +189,10 @@ public class Student {
     public void setSpecialisation(GenericSpecialisation specialisation) {
         this.specialisation = specialisation;
         for (GraduationRequirement graduationRequirement : this.major.getDegreeProgramme()
-            .getGraduationRequirementList()) {
+                .getGraduationRequirementList()) {
             if (graduationRequirement instanceof FocusAreaGraduationRequirement) {
                 FocusAreaGraduationRequirement focusAreaGraduationRequirement =
-                    (FocusAreaGraduationRequirement) graduationRequirement;
+                        (FocusAreaGraduationRequirement) graduationRequirement;
                 focusAreaGraduationRequirement.setGenericSpecialisation(specialisation);
             }
         }
