@@ -19,7 +19,7 @@ import seedu.address.model.student.Student;
 @JsonRootName(value = "planner")
 class JsonSerializablePlanner {
 
-    public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
+    public static final String MESSAGE_DUPLICATE_STUDENT = "Student list contains duplicate student(s).";
 
     private final JsonAdaptedStudent activeStudent;
     private final List<JsonAdaptedStudent> students = new ArrayList<>();
@@ -64,12 +64,13 @@ class JsonSerializablePlanner {
         for (JsonAdaptedStudent jsonAdaptedStudent : students) {
             Student student = jsonAdaptedStudent.toModelType();
             if (planner.hasStudent(student)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+                throw new IllegalValueException(MESSAGE_DUPLICATE_STUDENT);
             }
             planner.addStudent(student);
         }
-
-        planner.setActiveStudent(activeStudent.toModelType());
+        if (activeStudent != null) {
+            planner.setActiveStudent(activeStudent.toModelType());
+        }
         return planner;
     }
 

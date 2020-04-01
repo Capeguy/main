@@ -186,6 +186,9 @@ public class ModelManager implements Model {
     }
 
     public Path setPlannerFilePath(Path path) {
+        if (path == null) {
+            throw new NullPointerException();
+        }
         return path;
     }
 }

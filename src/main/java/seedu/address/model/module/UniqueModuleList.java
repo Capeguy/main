@@ -2,10 +2,12 @@ package seedu.address.model.module;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
@@ -65,7 +67,7 @@ public class UniqueModuleList implements Iterable<Module> {
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */
     public ObservableList<Module> asUnmodifiableObservableList() {
-        return null;
+        return FXCollections.observableArrayList(internalList.values());
     }
 
     @Override

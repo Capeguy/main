@@ -21,15 +21,16 @@ import seedu.address.model.module.ModuleCode;
 import seedu.address.model.module.UniqueModuleList;
 import seedu.address.model.student.Student;
 import seedu.address.model.time.StudentSemester;
+import seedu.address.testutil.TypicalModules;
 
 public class PlannerTest {
 
     private final Planner planner = new Planner();
+    private final Planner emptyPlanner = new Planner(false);
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), planner.getStudentList());
-        assertNotEquals(Collections.emptyList(), planner.getModuleList());
+        assertEquals(Collections.emptyList(), emptyPlanner.getStudentList());
     }
 
     @Test
@@ -51,13 +52,13 @@ public class PlannerTest {
 
     @Test
     public void hasModule_moduleNotInPlanner_returnsFalse() {
-        assertFalse(planner.hasModule(new Module()));
+        assertFalse(planner.hasModule(TypicalModules.CS2040));
     }
 
     @Test
     public void hasModule_moduleInPlanner_returnsTrue() {
-        planner.addModule(new Module());
-        assertTrue(planner.hasModule(new Module()));
+        planner.addModule(TypicalModules.CS2040);
+        assertTrue(planner.hasModule(TypicalModules.CS2040));
     }
 
     @Test

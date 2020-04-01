@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.module.Module;
 import seedu.address.testutil.PlannerBuilder;
+import seedu.address.testutil.TypicalModules;
 
 public class ModelManagerTest {
 
@@ -80,8 +81,8 @@ public class ModelManagerTest {
 
     @Test
     public void hasModule_moduleInPlanner_returnsTrue() {
-        modelManager.addModule(new Module());
-        assertTrue(modelManager.hasModule(new Module()));
+        modelManager.addModule(TypicalModules.CS2040);
+        assertTrue(modelManager.hasModule(TypicalModules.CS2040));
     }
 
     @Test

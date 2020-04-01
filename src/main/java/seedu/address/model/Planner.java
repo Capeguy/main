@@ -39,6 +39,14 @@ public class Planner implements ReadOnlyPlanner {
      */
     protected UniqueStudentList students; //TOOD: use list of students in storage
 
+
+    public Planner(boolean loadModules) {
+        activeStudent = null;
+        students = new UniqueStudentList();
+        if (loadModules) {
+            loadModules();
+        }
+    }
     /**
      * Creates an Planner using the UniqueStudentList in the {@code toBeCopied}.
      */
@@ -98,8 +106,7 @@ public class Planner implements ReadOnlyPlanner {
     }
 
     public boolean hasModule(Module module) {
-        // TODO
-        return false;
+        return modules.contains(module);
     }
 
 

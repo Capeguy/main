@@ -16,31 +16,31 @@ import seedu.address.testutil.TypicalModules;
 public class JsonSerializablePlannerTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializablePlannerTest");
-    private static final Path TYPICAL_PERSONS_FILE = TEST_DATA_FOLDER.resolve("typicalPersonsPlanner.json");
-    private static final Path INVALID_PERSON_FILE = TEST_DATA_FOLDER.resolve("invalidPersonPlanner.json");
-    private static final Path DUPLICATE_PERSON_FILE = TEST_DATA_FOLDER.resolve("duplicatePersonPlanner.json");
+    private static final Path TYPICAL_STUDENTS_FILE = TEST_DATA_FOLDER.resolve("typicalStudentsPlanner.json");
+    private static final Path INVALID_STUDENT_FILE = TEST_DATA_FOLDER.resolve("invalidStudentPlanner.json");
+    private static final Path DUPLICATE_STUDENT_FILE = TEST_DATA_FOLDER.resolve("duplicateStudentPlanner.json");
 
     @Test
-    public void toModelType_typicalPersonsFile_success() throws Exception {
-        JsonSerializablePlanner dataFromFile = JsonUtil.readJsonFile(TYPICAL_PERSONS_FILE,
+    public void toModelType_typicalStudentsFile_success() throws Exception {
+        JsonSerializablePlanner dataFromFile = JsonUtil.readJsonFile(TYPICAL_STUDENTS_FILE,
             JsonSerializablePlanner.class).get();
         Planner plannerFromFile = dataFromFile.toModelType();
-        Planner typicalPersonsPlanner = TypicalModules.getTypicalPlanner();
-        assertEquals(plannerFromFile, typicalPersonsPlanner);
+        Planner typicalStudentsPlanner = TypicalModules.getTypicalPlanner();
+        assertEquals(plannerFromFile, typicalStudentsPlanner);
     }
 
     @Test
-    public void toModelType_invalidPersonFile_throwsIllegalValueException() throws Exception {
-        JsonSerializablePlanner dataFromFile = JsonUtil.readJsonFile(INVALID_PERSON_FILE,
+    public void toModelType_invalidStudentFile_throwsIllegalValueException() throws Exception {
+        JsonSerializablePlanner dataFromFile = JsonUtil.readJsonFile(INVALID_STUDENT_FILE,
             JsonSerializablePlanner.class).get();
         assertThrows(IllegalValueException.class, dataFromFile::toModelType);
     }
 
     @Test
-    public void toModelType_duplicatePersons_throwsIllegalValueException() throws Exception {
-        JsonSerializablePlanner dataFromFile = JsonUtil.readJsonFile(DUPLICATE_PERSON_FILE,
+    public void toModelType_duplicateStudents_throwsIllegalValueException() throws Exception {
+        JsonSerializablePlanner dataFromFile = JsonUtil.readJsonFile(DUPLICATE_STUDENT_FILE,
             JsonSerializablePlanner.class).get();
-        assertThrows(IllegalValueException.class, JsonSerializablePlanner.MESSAGE_DUPLICATE_PERSON,
+        assertThrows(IllegalValueException.class, JsonSerializablePlanner.MESSAGE_DUPLICATE_STUDENT,
             dataFromFile::toModelType);
     }
 
