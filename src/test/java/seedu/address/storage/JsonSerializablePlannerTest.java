@@ -16,7 +16,7 @@ import seedu.address.testutil.TypicalModules;
 public class JsonSerializablePlannerTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializablePlannerTest");
-    private static final Path TYPICAL_STUDENTS_FILE = TEST_DATA_FOLDER.resolve("typicalStudentsPlanner.json");
+    private static final Path TYPICAL_STUDENTS_FILE = TEST_DATA_FOLDER.resolve("typicalStudentPlanner.json");
     private static final Path INVALID_STUDENT_FILE = TEST_DATA_FOLDER.resolve("invalidStudentPlanner.json");
     private static final Path DUPLICATE_STUDENT_FILE = TEST_DATA_FOLDER.resolve("duplicateStudentPlanner.json");
 

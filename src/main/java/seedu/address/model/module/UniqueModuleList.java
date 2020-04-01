@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
 /**
@@ -66,10 +67,9 @@ public class UniqueModuleList implements Iterable<Module> {
     /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */
-    public ObservableList<Module> asUnmodifiableObservableList() {
-        return FXCollections.observableArrayList(internalList.values());
+    public ObservableList<Module> asUnmodifiableObservableList() throws java.lang.UnsupportedOperationException {
+        return FXCollections.unmodifiableObservableList(FXCollections.observableArrayList(internalList.values()));
     }
-
     @Override
     public Iterator<Module> iterator() {
         return internalList.values().iterator();

@@ -3,6 +3,7 @@ package seedu.address.logic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.commands.student.StudentAddCommand.EXAMPLE_STUDENT;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.io.IOException;
@@ -15,6 +16,7 @@ import org.junit.jupiter.api.io.TempDir;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.student.StudentAddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -48,12 +50,6 @@ public class LogicManagerTest {
     }
 
     @Test
-    public void execute_commandExecutionError_throwsCommandException() {
-        String deleteCommand = "delete 9";
-        assertCommandException(deleteCommand, MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-    }
-
-    @Test
     public void execute_validCommand_success() throws Exception {
         String helpCommand = HelpCommand.COMMAND_WORD;
         assertCommandSuccess(helpCommand, HelpCommand.SHOWING_HELP_MESSAGE, model);
@@ -66,16 +62,15 @@ public class LogicManagerTest {
             new JsonPlannerIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionPlanner.json"));
         JsonUserPrefsStorage userPrefsStorage =
             new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
-        JsonPlannerStorage jsonPlannerStorage =
-            new JsonPlannerStorage(temporaryFolder.resolve("planner.json"));
-        StorageManager storage = new StorageManager(jsonPlannerStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(plannerStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
 
         // Execute help command
-        String addCommand = HelpCommand.COMMAND_WORD;
+        String studentAddCommand = StudentAddCommand.EXAMPLE_COMMAND;
         ModelManager expectedModel = new ModelManager();
+        expectedModel.addStudent(EXAMPLE_STUDENT);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
-        assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
+        assertCommandFailure(studentAddCommand, CommandException.class, expectedMessage, expectedModel);
     }
 
     @Test

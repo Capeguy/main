@@ -8,6 +8,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.student.Major;
+import seedu.address.model.student.Name;
 import seedu.address.model.student.Student;
 
 
@@ -16,6 +18,8 @@ import seedu.address.model.student.Student;
  */
 public class StudentAddCommand extends StudentCommand {
     public static final String COMMAND_WORD = "add";
+    public static final String EXAMPLE_COMMAND = "student add " + PREFIX_NAME + "Ben " + PREFIX_MAJOR + "CS";
+    public static final Student EXAMPLE_STUDENT = new Student(new Name("Ben"), new Major("CS"));
 
     public static final String MESSAGE_NOT_IMPLEMENTED_YET = "'" + getQualifiedCommand(COMMAND_WORD)
         + "' command not implemented yet";

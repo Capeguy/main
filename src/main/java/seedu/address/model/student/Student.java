@@ -118,10 +118,10 @@ public class Student {
 
         Student otherStudent = (Student) other;
         // TODO: initialize and compare `degrees`
-        return otherStudent.getName().equals(getName())
-                && otherStudent.getMajor().equals(getMajor())
+        return otherStudent.getName().equals(getName());
+                /*&& otherStudent.getMajor().equals(getMajor())
                 //&& otherStudent.getDegrees().equals(getDegrees())
-                && otherStudent.getTimeTableMap().equals(getTimeTableMap());
+                && otherStudent.getTimeTableMap().equals(getTimeTableMap());*/
     }
 
     @Override

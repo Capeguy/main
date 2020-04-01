@@ -57,7 +57,6 @@ public class ModuleDataImporter {
     }
 
     public ObservableList<Module> getFilteredModuleList() {
-        ObservableList<Module> oList = FXCollections.observableArrayList(modules);
-        return oList;
+        return FXCollections.unmodifiableObservableList(FXCollections.observableArrayList(modules));
     }
 }
