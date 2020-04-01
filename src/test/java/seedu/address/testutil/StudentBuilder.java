@@ -16,13 +16,13 @@ public class StudentBuilder {
         student = new Student();
     }
 
+    public StudentBuilder(Student student) {
+        this.student = student;
+    }
+
     public StudentBuilder withName(Name name) {
         this.student.setName(name);
         return this;
-    }
-
-    public StudentBuilder(Student student) {
-        this.student = student;
     }
 
     public Student build() {

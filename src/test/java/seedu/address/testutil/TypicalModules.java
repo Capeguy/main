@@ -16,7 +16,9 @@ public class TypicalModules {
     public static final Module CS2040 = new ModuleBuilder().withModuleCode(new ModuleCode("CS2040")).build();
     public static final Module CS2103T = new ModuleBuilder().withModuleCode(new ModuleCode("CS2103T")).build();
 
-    public static final Module NON_EXISTING_MODULE = new ModuleBuilder().withModuleCode(new ModuleCode("XXXXXXX")).build();
+    public static final Module NON_EXISTING_MODULE = new ModuleBuilder()
+            .withModuleCode(new ModuleCode("XXXXXXX"))
+            .build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 

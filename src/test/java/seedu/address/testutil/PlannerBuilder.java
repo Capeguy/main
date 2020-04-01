@@ -1,7 +1,7 @@
 package seedu.address.testutil;
 
-import seedu.address.model.module.Module;
 import seedu.address.model.Planner;
+import seedu.address.model.module.Module;
 import seedu.address.model.student.Student;
 
 /**
@@ -17,6 +17,10 @@ public class PlannerBuilder {
         planner = new Planner();
     }
 
+    public PlannerBuilder(Planner planner) {
+        this.planner = planner;
+    }
+
     public PlannerBuilder withStudent(Student student) {
         this.planner.addStudent(student);
         return this;
@@ -27,9 +31,6 @@ public class PlannerBuilder {
         return this;
     }
 
-    public PlannerBuilder(Planner planner) {
-        this.planner = planner;
-    }
 
     public Planner build() {
         return planner;

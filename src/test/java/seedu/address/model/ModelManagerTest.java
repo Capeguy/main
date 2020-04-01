@@ -86,7 +86,7 @@ public class ModelManagerTest {
         modelManager.addStudent(TypicalStudents.BOB);
         assertTrue(modelManager.hasStudent(TypicalStudents.BOB));
     }
-    
+
     @Test
     public void hasModule_nullModule_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> modelManager.hasModule(null));
@@ -110,7 +110,10 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        Planner planner = new PlannerBuilder().withModule(TypicalModules.CS2040).withStudent(TypicalStudents.BOB).build();
+        Planner planner = new PlannerBuilder()
+                .withModule(TypicalModules.CS2040)
+                .withStudent(TypicalStudents.BOB)
+                .build();
         Planner differentPlanner = new Planner();
         UserPrefs userPrefs = new UserPrefs();
 
